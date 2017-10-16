@@ -1,11 +1,10 @@
 var lock = new PatternLock("#patternContainer", {
     onDraw:function(pattern){
-      console.log(pattern);
       $("#pattern").val(pattern).trigger('change');
     }
 });
 
-$('#marker').change(function(){
+$('#marker, #pattern').change(function(){
   if($("#marker").val() != "" && $("#pattern").val() != ""){
     $("#encrypt").removeAttr("disabled");
   } else {
@@ -44,7 +43,6 @@ var initMap = function () {
 }
 
 function placeMarkerAndPanTo(latLng, map) {
-  console.log(latLng.lat() + "&" + latLng.lng());
   $("#marker").val(latLng.lat() + "&" + latLng.lng()).trigger('change');
   var marker = new google.maps.Marker({
     position: latLng,
